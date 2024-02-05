@@ -3,7 +3,8 @@
 README
 
 _______JAAM Studios_______
-*Presents* Blackjack Project (name tbd)
+
+*Presents* Blackjack Project
 
 Developers:
   - Jonah Hoffman (jh258312@my.stchas.edu)
