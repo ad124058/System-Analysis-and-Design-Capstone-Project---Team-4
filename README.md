@@ -2,7 +2,6 @@
 
 README
 
-/*
 _______JAAM Studios_______
 *Presents* Blackjack Project (name tbd)
 
@@ -33,4 +32,4 @@ Project Description:
   - Out of chips? Work as a trashman to earn more so you can head back to the tables..
   - Have a gambling problem that you can't seem to shake.. we have rehab roleplay to keep you off the casino floor!
 
-*/
+
