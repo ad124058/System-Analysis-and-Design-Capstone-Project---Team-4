@@ -9,7 +9,8 @@ _______JAAM Studios_______
 Developers:
   - Jonah Hoffman (jh258312@my.stchas.edu)
   - Austin Steiniger (as263003@my.stchas.edu)
-
+  - Nathan Feuerhaken (nf26320@my.stchas.edu)
+    
 Manager / Developers:
   - Alix David (ad124058@my.stchas.edu)
   - Matt Wright (mw212610@my.stchas.edu)
