@@ -12,7 +12,7 @@ $lName = $_POST['lEmail'];
 $Message = $_POST['Message'];
 
 // database insert SQL code
-$sql = "INSERT INTO `tbl_team4` (`Id`, `fName`, `lName`, `Message`) VALUES ('0', '$fName', '$lName', '$Message')";
+$sql = "INSERT INTO `tbl_team4` (`ID`, `fName`, `lName`, `Message`) VALUES ('0', '$fName', '$lName', '$Message')";
 
 // insert in database 
 $rs = mysqli_query($con, $sql);
