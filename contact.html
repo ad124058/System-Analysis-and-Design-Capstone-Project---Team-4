@@ -36,9 +36,9 @@
 <main>
 
   <form name="frmContact" method="post" action="contact.php">
-    <input type="text" placeholder="First name">
-    <input type="text" placeholder="Last name">
-    <textarea rows="4" cols="50" placeholder="Comments..."></textarea>
+    <input name="txtfName" type="text" placeholder="First name" required>
+    <input name="txtlName" type="text" placeholder="Last name" required>
+    <textarea name="txtMessage" rows="4" cols="50" placeholder="Comments..." required></textarea>
     <input type="submit">
   </form>
   
