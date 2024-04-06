@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Goated Casino</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="cascade.css" rel="stylesheet">
+<link rel="shortcut icon" type="image/png" href="favicon-16x16.png">
+</head>
+
+<body>
+
+<div>  
+  <nav>
+    <ul class="banner">
+   <li id="left"><a href="index.html">Goated Casino</a></li>
+   <li id = "right"><a href="earn.html">EARN</a></li>
+    </ul>
+<br><br>
+  <ul>
+         <li><a href="index.html">HOME</a></li>
+         <li><a href="play.html">PLAY</a></li>
+         <li><a href="rehab.html">REHAB</a></li>
+  </ul>
+   </nav>
+<br>
+</div>
+
+
+
+  <div class="earn"></div>
+  <img src="truck-modified.png" class="truck">
+  <img src="beer-modified.png" class="trashhh">
+  <button id="trashy">Grab That Trash!</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var x = document.querySelector('.earn');
+        // For the whole background
+        var trashy = document.getElementById('trashy');
+        // THis is the button
+        var trashImage = document.querySelector('.trashhh');
+        // THis is for the beer can
+        // Setting empty pre req reset and 33.55 seconds
+        var round;
+        var animationPaused = true;
+        var position = 0;
+        // Some further explanation on this, it's just so funny that it takes forever
+        var animationDuration = 33550;
+
+        function moveAlong() {
+          // This is the 2nd most important. It moves the background ever so slightly to the left on x axis.
+          // When process is complete it'll also show the beer can and show the button to pick up the trash, also reset round
+            position -= 1;
+            x.style.backgroundPositionX = position + 'px';
+            if (position <= -x.offsetWidth) {
+                clearInterval(round);
+                animationPaused = true;
+                trashy.style.display = "block";
+                trashImage.style.display = "block";
+            }
+        }
+
+        function startTrashGame() {
+          // Most important function here, this is running the other function over and over until it's complete
+            round = setInterval(moveAlong, 50);
+            setTimeout(function() {
+                clearInterval(round);
+                animationPaused = true;
+                trashy.style.display = "block";
+                trashImage.style.display = "block";
+            }, animationDuration);
+        }
+
+        trashy.addEventListener('click', function() {
+          // This is what happens on click. It gets the whole thing rolling and hides what needs to be hidden.
+            if (animationPaused) {
+                position = 0;
+                x.style.backgroundPositionX = position + 'px';
+                startTrashGame();
+                animationPaused = false;
+                trashy.style.display = "none";
+                trashImage.style.display = "none";
+            }
+        });
+    });
+</script>
+
+<!-- 33550 is the time for the game to leave screen -->
+
+</body>
+<br>
+<footer>
+Copyright &copy; Kind Of Team 4
+</footer>
+</html>

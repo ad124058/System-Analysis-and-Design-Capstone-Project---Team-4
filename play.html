@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Goated Casino</title>
+<script src="script.js" type="module"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="cascade.css" rel="stylesheet">
+<link rel="shortcut icon" type="image/png" href="favicon-16x16.png">
+</head>
+<!-- all the crap up top to make it work -->
+<body>
+  <div>  
+    <nav>
+      <!-- This is the 5 buttons on top part of screen , may wanna resize, eh -->
+      <ul class="banner">
+     <li id="left"><a href="index.html">Goated Casino</a></li>
+     <li id = "right"><a href="play.html">PLAY</a></li>
+      </ul>
+  <br><br>
+    <ul>
+      <!-- Sorry those were top two these r final 3 -->
+           <li><a href="index.html">HOME</a></li>
+           <li><a href="earn.html">EARN</a></li>
+           <li><a href="rehab.html">REHAB</a></li>
+    </ul>
+     </nav>
+  <br>
+  </div>
+  <!-- Yes this is nessecary however you spell that -->
+ <!-- <h1>Let's get a gamblin'!</h1> -->
+  
+  <div class="play"> <!-- Play is the somewhat square that holds the felt of the blackjack table -->
+    <div class="major"> <!-- Divided into 2 sections, major & minor -->
+      <button class="start" id="startButton" onclick="letsGOOO()">Start Game</button> <!-- Get the js in there -->
+      <div class="" id="onTheScreen"></div>
+      <div id="hisHand">
+        <p class="labeling">Dealer: </p>
+        <br><br><br><br><br>
+        <p class="labeling">My Hand: </p>
+        <br><br><br>
+      </div>
+      <!-- Gotta split up the dealer & player hands ofc -->
+    <br>
+      <div id="myHand">
+      </div>
+    </div>
+    <div class="minor">
+      <div class="section">Username</div>
+      <div class="section"></div>
+      <div class="section"></div>
+      <div class="section" id="playerResult">My Hand</div>
+      <div class="section" id="dealerResult">Dealer</div>
+      <div class="section">Balance:</div>
+      <div class="section" id="hitButton"></div>
+      <div class="section" id="standButton"></div>
+    <div class="player-section">
+      <div class="section" id="playerCards"></div>
+      <div class="section" id="mainManTotal"></div>
+    </div>
+    <div class="dealer-section">
+      <div class="section" id="dealerCards"></div>
+      <div class="section" id="badGuyTotal" style="display: none;"></div>
+    </div>
+    </div>
+  </div>
+
+  <script>
+    const CARD_VALUES = {
+  '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
+  'J': 10, 'Q': 10, 'K': 10, 'A': 11
+};
+
+let pile, mainMan, theEnemy;
+
+function getHerRollin() {
+  // Making the actual thing here
+  const suits = ['♡', '♢', '♧', '♤'];
+  const ranks = Object.keys(CARD_VALUES);
+  const pile = [];
+  for (let suit of suits) {
+    for (let rank of ranks) {
+      pile.push({rank: rank, suit: suit});
+    }
+  }
+  return pile;
+}
+
+function shufflin(pile) {
+  // This is gonna shuffle every single time
+  for (let i = pile.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pile[i], pile[j]] = [pile[j], pile[i]];
+  }
+  return pile;
+}
+
+function whatIsThat(hand, containerId) {
+    // You gotta actually show some cards.. right?
+    const container = document.getElementById(containerId);
+
+    // I don't want it to show the previous hand. This was way harder to learn than it needed to be.
+    container.innerHTML = '';
+
+    hand.forEach(card => {
+        // Here is simply getting the cards ready to go, also flipping em around
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+        const rankSuitElement = document.createElement('div');
+        rankSuitElement.classList.add('rank-suit');
+        rankSuitElement.textContent = card.rank + card.suit;
+        // If you can't tell, this took prolly the longest to create.
+        const suitElement = document.createElement('div');
+        suitElement.classList.add('suit');
+        suitElement.textContent = card.suit;
+        const rankSuitFlippedElement = document.createElement('div');
+        rankSuitFlippedElement.classList.add('rank-suit-flipped');
+        rankSuitFlippedElement.textContent = card.rank + card.suit;
+
+        // Appendding all of this togethr
+        cardElement.appendChild(rankSuitElement);
+        cardElement.appendChild(suitElement);
+        cardElement.appendChild(rankSuitFlippedElement);
+        container.appendChild(cardElement);
+    });
+}
+
+// This isn't even in a function am I retarded
+whatIsThat(mainMan, 'myHand');
+whatIsThat(theEnemy, 'hisHand');
+
+function calculateHandValue(hand) {
+  // This will get the total combines rank and add em all up in 1 convenient number
+  let total = 0;
+  let numAces = 0;
+  for (let card of hand) {
+    total += CARD_VALUES[card.rank];
+    if (card.rank === 'A') {
+      numAces++;
+    }
+  }
+  while (total > 21 && numAces > 0) {
+    total -= 10;
+    numAces--;
+  }
+  return total;
+}
+
+function dealCard(pile) {
+  // Just getting next here
+  return pile.pop();
+}
+
+
+
+
+function letsGOOO() {
+  // This first part just for display. Got  a button for hit or stand, also, what happened to the balances? Should prolly look at this
+  document.getElementById('badGuyTotal').style.display = 'none';
+  document.getElementById('startButton').style.display = 'none';
+  document.getElementById('hitButton').innerHTML = '<button onclick="playerHit()">Hit</button>';
+  document.getElementById('standButton').innerHTML = '<button onclick="playerStand()">Stand</button>';
+  document.getElementById('mainManTotal').innerText = 'Player Balance: ';
+  document.getElementById('badGuyTotal').innerText = 'Dealer Balance: ';
+
+  pile = shufflin(getHerRollin());
+  mainMan = [dealCard(pile), dealCard(pile)];
+  theEnemy = [dealCard(pile), dealCard(pile)];
+
+  const onTheScreen = document.getElementById('onTheScreen');
+//  onTheScreen.innerHTML = 'Player Hand: ';
+  mainMan.forEach(card => {
+//    onTheScreen.innerHTML += card.rank + ' of ' + card.suit + ', ';
+  });
+//  onTheScreen.innerHTML = onTheScreen.innerHTML.slice(0, -2) + '<br>';
+//  onTheScreen.innerHTML += 'Dealer Hand: [' + theEnemy[0].rank + ' ' + theEnemy[0].suit + ', Hidden] <br><br>';
+
+  // Update total card values
+  fixMainManTotal();
+  fixBadGuyTotal();
+  whatIsThat(mainMan, 'myHand');
+  whatIsThat(theEnemy, 'hisHand');
+
+  // Check for Blackjack
+  if (calculateHandValue(mainMan) === 21) {
+ //   onTheScreen.innerHTML += 'Blackjack! Player wins!';
+    return;
+  }
+
+  // Player's turn
+//  onTheScreen.innerHTML += 'Hit or Stand? <br>';
+}
+
+function playerHit() {
+  const card = dealCard(pile);
+  mainMan.push(card);
+//  document.getElementById('onTheScreen').innerHTML += 'Player hits: ' + card.rank + ' <br>';
+  const myStash = calculateHandValue(mainMan);
+  fixMainManTotal();
+  whatIsThat(mainMan, 'myHand');
+  whatIsThat(theEnemy, 'hisHand');
+
+  if (myStash > 21) {
+//    document.getElementById('onTheScreen').innerHTML += 'Busted! Dealer wins!';
+    revealDealerCards();
+    hideHitStandButtons();
+    showStartButton();
+    whatIsThat(mainMan, 'myHand');
+    whatIsThat(theEnemy, 'hisHand');
+    return;
+  }
+}
+
+function playerStand() {
+//  document.getElementById('onTheScreen').innerHTML += 'Player stands <br><br>';
+//  document.getElementById('onTheScreen').innerHTML += 'Dealer\'s turn <br>';
+  revealDealerCards();
+  hideHitStandButtons();
+  whatIsThat(mainMan, 'myHand');
+  whatIsThat(theEnemy, 'hisHand');
+
+  // Dealer's turn
+  setTimeout(() => {
+    fixBadGuyTotal();
+    whatIsThat(mainMan, 'myHand');
+    whatIsThat(theEnemy, 'hisHand');
+    document.getElementById('badGuyTotal').style.display = 'block';
+    dealerTurn();
+  }, 1000);
+}
+
+function dealerTurn() {
+  // Reveal the dealer's balance
+  document.getElementById('badGuyTotal').style.display = 'block';
+  fixBadGuyTotal();
+  whatIsThat(mainMan, 'myHand');
+  whatIsThat(theEnemy, 'hisHand');
+  let myStash = calculateHandValue(mainMan);
+  let hisStash = calculateHandValue(theEnemy);
+
+  while (hisStash <  myStash) {
+    const card = dealCard(pile);
+    theEnemy.push(card);
+//    document.getElementById('onTheScreen').innerHTML += 'Dealer hits: ' + card.rank + ' <br>';
+    hisStash = calculateHandValue(theEnemy);
+    fixBadGuyTotal();
+    whatIsThat(mainMan, 'myHand');
+    whatIsThat(theEnemy, 'hisHand');
+    document.getElementById('badGuyTotal').style.display = 'block';
+    if (hisStash > 21) {
+//      document.getElementById('onTheScreen').innerHTML += 'Dealer busted! Player wins!';
+      showStartButton();
+      fixBadGuyTotal();
+      whatIsThat(mainMan, 'myHand');
+      whatIsThat(theEnemy, 'hisHand');
+      document.getElementById('badGuyTotal').style.display = 'block';
+      return;
+    }
+    // Update the dealer's balance after each card is dealt
+    fixBadGuyTotal();
+    whatIsThat(mainMan, 'myHand');
+    whatIsThat(theEnemy, 'hisHand');
+    document.getElementById('badGuyTotal').style.display = 'block';
+  }
+
+  // Determine the winner after the dealer has finished playing
+  determineWinner();
+}
+
+function revealDealerCards() {
+//  document.getElementById('onTheScreen').innerHTML += 'Dealer Hand: ';
+  theEnemy.forEach(card => {
+//    document.getElementById('onTheScreen').innerHTML += card.rank + ' of ' + card.suit + ', ';
+  });
+//  document.getElementById('onTheScreen').innerHTML = document.getElementById('onTheScreen').innerHTML.slice(0, -2);
+//  document.getElementById('onTheScreen').innerHTML += '<br>';
+}
+
+function hideHitStandButtons() {
+  // Hide the hit and stand buttons
+  document.getElementById('hitButton').innerHTML = '';
+  document.getElementById('standButton').innerHTML = '';
+}
+
+function showStartButton() {
+  // SHowing start button function obviously
+  document.getElementById('startButton').style.display = 'block';
+}
+
+function determineWinner() {
+  // This could be fixed. Yeah it should be. It will show who wins simply.
+  const myStash = calculateHandValue(mainMan);
+  const hisStash = calculateHandValue(theEnemy);
+  let message = '';
+  if (myStash < hisStash && hisStash > 21) {
+ //   message = 'You win!';
+  } else if (myStash < hisStash && hisStash <= 21) {
+ //   message = 'Dealer wins! ;{';
+  } else if (myStash > hisStash && myStash > 21) {
+ //   message = 'Dealer wins! ;{';
+  } else if (myStash > hisStash && myStash <= 21) {
+ //   message = 'You Win!';
+  } else {
+ //   message = 'It\'s a tie!';
+  }
+          // Not 100% sure why this doesn't work
+          //    ^ ^ ^ ^ ^ ^  ^ ^ ^ ^ ^ ^ ^ ^ ^
+  document.getElementById('onTheScreen').innerHTML += message;
+
+  // Here we're fixing the totals on screen also showing start again button
+  fixMainManTotal();
+  fixBadGuyTotal();
+  whatIsThat(mainMan, 'myHand');
+  whatIsThat(theEnemy, 'hisHand');
+  showStartButton();
+}
+
+function fixMainManTotal() {
+  // Just fixing a total
+  whatIsThat(mainMan, 'myHand');
+  whatIsThat(theEnemy, 'hisHand');
+  const myStash = calculateHandValue(mainMan);
+  document.getElementById('mainManTotal').innerText = 'Count: ' + myStash;
+}
+
+function fixBadGuyTotal() {
+  // Just fixing a different total
+  whatIsThat(mainMan, 'myHand');
+  whatIsThat(theEnemy, 'hisHand');
+  const hisStash = calculateHandValue(theEnemy);
+  document.getElementById('badGuyTotal').innerText = 'Count: ' + hisStash;
+}
+  </script>
+</body>
+</html>
+<footer>
+Copyright &copy; Kind Of Team 4
+</footer>
+
