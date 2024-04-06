@@ -20,6 +20,8 @@ $rs = mysqli_query($con, $sql);
 if($rs)
 {
 	echo "Contact Records Inserted";
+	$url = "index.html";
+	echo "<a href='$url'>Home</a>";
 }
 }
 else
