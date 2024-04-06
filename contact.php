@@ -3,14 +3,13 @@
 if(isset($_POST['txtName']))
 {
 // $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
-$con = mysqli_connect('localhost', 'root', '','db_contact');
+$con = mysqli_connect('localhost', 'root', '','db_tm4');
 
 // get the post records
 
-$txtName = $_POST['txtName'];
-$txtEmail = $_POST['txtEmail'];
-$txtPhone = $_POST['txtPhone'];
-$txtMessage = $_POST['txtMessage'];
+$fName = $_POST['fName'];
+$lName = $_POST['lName'];
+$Message = $_POST['Message'];
 
 // database insert SQL code
 $sql = "INSERT INTO `tbl_tm4` (`Id`, `fName`, `lName`, `Message`) VALUES ('0', '$fName', '$lName', '$Message')";
