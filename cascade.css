@@ -472,7 +472,7 @@ button#trashy {
 			cursor: pointer;
 		}
 
-@media (min-width: 3px) {
+@media (max-width: 480px) {
 	.trashhh {
 		top: 81%;
 	}
