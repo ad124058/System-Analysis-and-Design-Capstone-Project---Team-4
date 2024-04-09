@@ -377,6 +377,12 @@ footer {
 	}
 }
 
+@media (max-width: 375px) {
+	.left, .middle, .right {
+		height: 600px;
+	}
+}
+
 @media (min-width: 625px) {
 	.major {
 		height: 300px;
