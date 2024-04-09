@@ -356,6 +356,12 @@ footer {
 	}
 }
 
+@media (min-width: 651px) {
+	.theimages {
+		display: block;
+	}
+}	
+
 @media (min-width: 300px) {
 	.major {
 		height: 225px;
