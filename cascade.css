@@ -346,7 +346,7 @@ footer {
 		display: none;
 	}
 	.left, .middle, .right {
-	height: 625px;
+	height: 575px;
 }
 }
 
@@ -410,9 +410,6 @@ footer {
 @media (max-width: 549px) {
 	.rightt {
 		width: 50%;
-	}
-	.left, .middle, .right {
-	height: 900px;
 	}
 }	
 
