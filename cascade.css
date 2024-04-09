@@ -149,7 +149,7 @@ input, textarea {
 		font-size: 15px;
 	}
 	.left, .middle, .right {
-	height: 480px;
+	height: 500px;
 }
 }
 @media (max-width: 750px) {
@@ -407,7 +407,10 @@ footer {
 @media (max-width: 549px) {
 	.rightt {
 		width: 50%;
-	}	
+	}
+	.left, .middle, .right {
+	height: 650px;
+}
 }	
 
 .earn {
