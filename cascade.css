@@ -462,41 +462,12 @@ footer {
 	transform: translate(-50%, -50%);
 }
 
-button#trashy {
-			position: absolute;
-			top: 43%;
-			left: 50%;
-			transform: translateX(-50%);
-			padding: 10px 20px;
-			font-size: 16px;
-			cursor: pointer;
-		}
-@media (min-width: 1px) {
+@media (min-width: 705px) {
 	.trashhh {
-		top: 73%;
+		left: 48%;
 	}
 	.truck {
-		top: 73%;
-	}
-}
-
-@media (max-width: 499px) {
-	.trashhh {
-		top: 72%;
-	}
-	.truck {
-		top: 72%;
-	}
-}	
-
-@media (min-width: 500px) {
-	.trashhh {
-		top: 77%;
-	}
-	.truck {
-		top: 77%;
-		height: 120px;
-		width: 150px;
+		left: 40%;
 	}
 }
 
@@ -509,14 +480,44 @@ button#trashy {
 	}
 }
 
-@media (min-width: 705px) {
+@media (min-width: 500px) {
 	.trashhh {
-		left: 48%;
+		top: 77%;
 	}
 	.truck {
-		left: 40%;
+		top: 77%;
+		height: 120px;
+		width: 150px;
 	}
 }
+
+@media (max-width: 499px) {
+	.trashhh {
+		top: 72%;
+	}
+	.truck {
+		top: 72%;
+	}
+}
+
+@media (min-width: 1px) {
+	.trashhh {
+		top: 73%;
+	}
+	.truck {
+		top: 73%;
+	}
+}
+
+button#trashy {
+			position: absolute;
+			top: 43%;
+			left: 50%;
+			transform: translateX(-50%);
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+		}
 
 .rehab {
     width: 88vw;
