@@ -345,6 +345,9 @@ footer {
 	.theimages {
 		display: none;
 	}
+	.left, .middle, .right {
+	height: 750px;
+}
 }
 
 @media (max-width: 650px) {
