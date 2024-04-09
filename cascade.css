@@ -472,16 +472,16 @@ button#trashy {
 			cursor: pointer;
 		}
 
-@media (max-width: 480px) {
+@media (max-width: 499px) {
 	.trashhh {
-		top: 81%;
+		top: 72%;
 	}
 	.truck {
-		top: 81%;
+		top: 72%;
 	}
 }	
 
-@media (max-width: 500px) {
+@media (min-width: 500px) {
 	.trashhh {
 		top: 77%;
 	}
