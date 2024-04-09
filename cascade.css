@@ -471,6 +471,14 @@ button#trashy {
 			font-size: 16px;
 			cursor: pointer;
 		}
+@media (min-width: 1px) {
+	.trashhh {
+		top: 70%;
+	}
+	.truck {
+		top: 70%;
+	}
+}
 
 @media (max-width: 499px) {
 	.trashhh {
