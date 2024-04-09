@@ -473,19 +473,19 @@ footer {
 
 @media (max-width: 700px) {
 	.trashhh {
-		top: 72%;
+		top: 68%;
 	}
 	.truck {
-		top: 72%;
+		top: 68%;
 	}
 }
 
 @media (min-width: 500px) {
 	.trashhh {
-		top: 77%;
+		top: 68%;
 	}
 	.truck {
-		top: 77%;
+		top: 68%;
 		height: 120px;
 		width: 150px;
 	}
@@ -493,10 +493,10 @@ footer {
 
 @media (max-width: 499px) {
 	.trashhh {
-		top: 72%;
+		top: 68%;
 	}
 	.truck {
-		top: 72%;
+		top: 68%;
 	}
 }
 
