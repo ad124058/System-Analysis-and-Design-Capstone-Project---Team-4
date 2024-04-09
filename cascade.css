@@ -92,7 +92,7 @@ h3 {
 	height: 300px;
 }
 .rightt {
-	width: 60%;
+	width: 63%;
 	height: 300px;
 }
 .size {
@@ -174,7 +174,7 @@ input, textarea {
 	font-size: 14px;
 }
 	.rightt {
-	width: 60%;
+	width: 63%;
 }
 	.red {
 	color: red;
@@ -403,6 +403,12 @@ footer {
 		height: 394px;
 	}
 }
+
+@media (max-width: 549px) {
+	.rightt {
+		width: 50%;
+	}	
+}	
 
 .earn {
     width: 88vw;
