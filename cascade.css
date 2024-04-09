@@ -457,7 +457,7 @@ footer {
 	position: absolute;
 	height: 120px;
 	width: 150px;
-	top: 81%;
+	top: 76%;
 	left: 28%;
 	transform: translate(-50%, -50%);
 }
@@ -473,10 +473,10 @@ button#trashy {
 		}
 @media (min-width: 1px) {
 	.trashhh {
-		top: 70%;
+		top: 73%;
 	}
 	.truck {
-		top: 70%;
+		top: 73%;
 	}
 }
 
