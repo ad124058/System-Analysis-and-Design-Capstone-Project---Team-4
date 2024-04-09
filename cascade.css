@@ -347,6 +347,15 @@ footer {
 	}
 }
 
+@media (max-width: 650px) {
+	.account {
+		display: none;
+	}
+	.theimages {
+		display: none;
+	}
+}
+
 @media (min-width: 300px) {
 	.major {
 		height: 225px;
