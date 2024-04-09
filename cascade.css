@@ -188,6 +188,9 @@ input, textarea {
 	img {
 	height: 24%;
 }
+	.map {
+	display: none;	
+}
 }
 
 u {
