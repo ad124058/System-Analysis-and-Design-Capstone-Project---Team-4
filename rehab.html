@@ -6,6 +6,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="cascade.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/png" href="favicon-16x16.png">
+
+  <style>
+img {
+	width: 88vw;
+	height: 66vw;
+	max-width: 680px;
+	max-height: 510px;
+	border: 3.4px solid black;
+	border-radius: 8px;
+	position:absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+</style>
+
+<script>
+	function changeImage(){
+	var img = document.getElementById("image");
+	img.src="fillerImage.jpg";
+	return false;
+	}
+
+</script>
+  
 </head>
 
 <body>
@@ -27,7 +52,9 @@
 </div>
 
 <div class="rehab"></div>
-
+<img id="image" src="BASE_APARTMENT.png" alt="Base Apartment">
+<button type="button" class="rehabUpgrade" onclick="changeImage();">UPGRADE APARTMENT!</button>
+  
 </body>
 <br>
 <footer>
