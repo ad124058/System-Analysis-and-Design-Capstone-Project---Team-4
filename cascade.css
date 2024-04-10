@@ -536,3 +536,19 @@ button#trashy {
     transform: translate(-50%, -50%);
 	animation: slideBackground 10s linear infinite;
 }
+
+.rehabUpgrade {
+	position: absolute;
+	height: 100px;
+	width: 280px;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 5px;
+	background-color: rgb(230, 55, 116);
+	border: 2px solid black;
+	text-align: center;
+	padding: 20px;
+	text-decoration: none;
+	color: white;
+}
