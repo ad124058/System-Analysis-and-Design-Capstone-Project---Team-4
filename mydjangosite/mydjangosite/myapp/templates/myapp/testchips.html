@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chip Tester</title>
+</head>
+<body>
+    <div>
+        <button onclick="addChips(true)">Add Chips</button>
+        <button onclick="addChips(false)">Lose Chips</button>
+        <input type="text" id="amount">
+    </div>
+
+    <div>
+        <h2 id="username"> {{ user.user_name }} </h2>
+        <h2 id="chipcount"> {{ user.chip_count }} </h2>
+    </div>
+</body>
+</html>
+{% csrf_token %}
+<script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    async function addChips(isPositive){
+
+        chips =  document.getElementById("amount").value;
+        data = {
+            'chips' : chips,
+            'username' : document.getElementById("username").innerHTML,
+            'isPositive' : isPositive
+        };
+
+        config = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body : JSON.stringify(data)
+        };
+
+        const response = await fetch('/updateChips', config);
+        jsonresponse = await response.json();
+        console.log(jsonresponse);
+
+
+        document.getElementById("chipcount").innerHTML = jsonresponse.chips
+    }
+</script>

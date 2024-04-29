@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Goated Casino</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cascade.css' %}">
+    <link rel="shortcut icon" type="image/png" href="favicon-16x16.png">
+
+
+  <style>
+img {
+	width: 88vw;
+	height: 66vw;
+	max-width: 680px;
+	max-height: 510px;
+	border: 3.4px solid black;
+	border-radius: 8px;
+	position:absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+</style>
+
+</head>
+
+<body>
+
+<div>
+  <nav>
+    <ul class="banner">
+   <li id="left"><a href="index">Goated Casino</a></li>
+   <li id = "right"><a href="rehab">REHAB</a></li>
+    </ul>
+<br><br>
+  <ul>
+         <li><a href="index">HOME</a></li>
+         <li><a href="earn">EARN</a></li>
+         <li><a href="play">PLAY</a></li>
+  </ul>
+   </nav>
+<br>
+</div>
+
+<div class="rehab"></div>
+<audio playsinline="" id="music">
+  <source src="{% static 'loneliness_long-202383.mp3' %}" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<img src="{% static 'BASE_APARTMENT.png' %}" alt="Gambla" id="image">
+<button type="button" class="rehabUpgrade" onclick=playmusic()>Think about your losses...</button>
+
+</body>
+<br>
+<footer>
+Copyright &copy; Kind Of Team 4
+</footer>
+</html>
+<script>
+  function playmusic(){
+    document.getElementById('music').play();
+  }
+</script>
