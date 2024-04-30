@@ -18,7 +18,7 @@ def index(request):
         return render(request, "myapp/index.html", {'user' : user})
     
     return render(request, "myapp/index.html", {})
-
+# start a play request
 def play(request):
     try:
         user = CustomerProfile.objects.get(user_name=request.session.get('currentUser')['username'])
