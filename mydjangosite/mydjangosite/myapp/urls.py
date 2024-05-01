@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
-
+# this is for the different pathways for the game
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
