@@ -32,7 +32,7 @@ def earn(request):
         return render(request, "myapp/earn.html", {'user' : user})
     except:
         return redirect("loggy")
-
+#start a rehab request
 def rehab(request):
     try:
         user = CustomerProfile.objects.get(user_name=request.session.get('currentUser')['username'])
