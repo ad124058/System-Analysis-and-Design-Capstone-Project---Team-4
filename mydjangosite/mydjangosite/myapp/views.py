@@ -130,7 +130,7 @@ def updateChips(request):
     response_data = {}
     response_data['chips'] = user.chip_count
     return JsonResponse({'chips' : user.chip_count})
-
+# start a testchips request
 def testchips(request):
     try:
         user = CustomerProfile.objects.get(user_name=request.session.get('currentUser')['username'])
