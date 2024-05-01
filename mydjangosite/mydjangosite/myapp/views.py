@@ -25,7 +25,7 @@ def play(request):
         return render(request, "myapp/play.html", {'user' : user})
     except:
         return redirect("loggy")
-
+# start a earn request 
 def earn(request):
     try:
         user = CustomerProfile.objects.get(user_name=request.session.get('currentUser')['username'])
