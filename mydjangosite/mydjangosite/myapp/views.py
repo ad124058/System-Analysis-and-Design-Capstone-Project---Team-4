@@ -78,7 +78,7 @@ def register(request):
 def register_success(request):
     return render(request, 'myapp/register_success.html')
 
-
+# start a login request
 def loggy(request):
     if request.method == 'POST':
         username = request.POST.get('username')
