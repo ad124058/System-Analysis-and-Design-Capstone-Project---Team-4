@@ -17,6 +17,6 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
-
+"""This will give the an if statment for the def main above."""
 if __name__ == '__main__':
     main()
