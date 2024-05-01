@@ -137,7 +137,7 @@ def testchips(request):
         return render(request, "myapp/testchips.html", {'user' : user})
     except:
         return redirect("loggy")
-
+# start a dummy request
 def dummy(request):
     try:
         user = CustomerProfile.objects.get(user_name=request.session.get('currentUser')['username'])
