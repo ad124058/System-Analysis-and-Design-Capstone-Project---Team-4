@@ -100,7 +100,7 @@ def loggy(request):
         return render(request, "myapp/alreadylogged.html", {'username' : request.session.get('currentUser')})
     return render(request, "myapp/loggy.html", {})
 
-
+# start a logout request
 def logout(request):
     try:
         request.session.pop('currentUser')
